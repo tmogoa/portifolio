@@ -7,9 +7,19 @@ import { colors } from "../colors";
 import Intro from "../components/Intro";
 import End from "../components/End";
 import Edu from "../components/Edu";
+import Interests from "../components/Interest";
+import Skills from "../components/Skills";
+import Projects from "../components/Projects";
 
 const Home = () => {
-    const [sections] = useState([<Intro />, <Edu />, <End />]);
+    const [sections] = useState([
+        <Intro />,
+        <Edu />,
+        <Skills />,
+        <Projects />,
+        <Interests />,
+        <End />,
+    ]);
     const [currentSection, setCurrentSection] = useState(0);
 
     useEffect(() => {
