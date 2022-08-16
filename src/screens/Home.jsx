@@ -49,7 +49,9 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="flex-grow flex">{sections[currentSection]}</div>
+            <div className="flex-grow max-h-max flex">
+                {sections[currentSection]}
+            </div>
 
             <div className="bg-white p-2 w-full text-end text-xs font-semibold">
                 Use right → and left ← keys to navigate
