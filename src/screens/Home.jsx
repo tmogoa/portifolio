@@ -75,13 +75,11 @@ const Home = () => {
                 /*most significant*/
                 if (xDiff > 0) {
                     /* right swipe */
-                    console.log("right");
                     if (currentSection < sections.length - 1) {
                         setCurrentSection(currentSection + 1);
                     }
                 } else {
                     /* left swipe */
-                    console.log("left");
                     if (currentSection > 0) {
                         setCurrentSection(currentSection - 1);
                     }
