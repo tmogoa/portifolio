@@ -23,10 +23,16 @@ const Home = () => {
     const [currentSection, setCurrentSection] = useState(0);
 
     useEffect(() => {
+        let xDown = null;
+        let yDown = null;
         window.addEventListener("keydown", onArrowKeyDown);
+        document.addEventListener("touchstart", handleTouchStart, false);
+        document.addEventListener("touchmove", handleTouchMove, false);
 
         return () => {
             window.removeEventListener("keydown", onArrowKeyDown);
+            document.removeEventListener("touchstart", handleTouchStart, false);
+            document.removeEventListener("touchmove", handleTouchMove, false);
         };
 
         function onArrowKeyDown(event) {
@@ -40,10 +46,64 @@ const Home = () => {
                 }
             }
         }
+
+        function getTouches(evt) {
+            return (
+                evt.touches || // browser API
+                evt.originalEvent.touches
+            ); // jQuery
+        }
+
+        function handleTouchStart(evt) {
+            const firstTouch = getTouches(evt)[0];
+            xDown = firstTouch.clientX;
+            yDown = firstTouch.clientY;
+        }
+
+        function handleTouchMove(evt) {
+            if (!xDown || !yDown) {
+                return;
+            }
+
+            var xUp = evt.touches[0].clientX;
+            var yUp = evt.touches[0].clientY;
+
+            var xDiff = xDown - xUp;
+            var yDiff = yDown - yUp;
+
+            if (Math.abs(xDiff) > Math.abs(yDiff)) {
+                /*most significant*/
+                if (xDiff > 0) {
+                    /* right swipe */
+                    console.log("right");
+                    if (currentSection < sections.length - 1) {
+                        setCurrentSection(currentSection + 1);
+                    }
+                } else {
+                    /* left swipe */
+                    console.log("left");
+                    if (currentSection > 0) {
+                        setCurrentSection(currentSection - 1);
+                    }
+                }
+            } else {
+                if (yDiff > 0) {
+                    /* down swipe */
+                } else {
+                    /* up swipe */
+                }
+            }
+            /* reset values */
+            xDown = null;
+            yDown = null;
+        }
     }, [currentSection, sections.length]);
 
     return (
-        <div className="w-full lg:h-screen flex flex-col bg-gradient-to-r from-cyan-400 to-blue-800">
+        <div className="w-full h-screen flex flex-col bg-gradient-to-r from-cyan-400 to-blue-800">
+            <div className="block lg:hidden text-end  bg-white p-1 w-full text-xs font-semibold">
+                swipe right → or left ← to navigate
+            </div>
             <div className="w-full p-6 flex flex-row">
                 <div className="text-xs uppercase font-bold text-cyan-500 rounded-sm align-middle py-1 px-2 bg-white">
                     {currentSection + 1} of {sections.length}
@@ -66,13 +126,15 @@ const Home = () => {
                 </div>
             </div>
 
-            <div className="flex-grow max-h-max flex">
+            <div className="flex-grow lg:max-h-max flex overflow-y-scroll lg:overflow-auto">
                 {sections[currentSection]}
             </div>
 
-            <div className="flex flex-row justify-between items-center bg-white p-2 w-full text-xs font-semibold">
+            <div className="flex flex-col-reverse lg:flex-row justify-between items-center bg-white p-2 w-full text-xs font-semibold">
                 <span>Designed and built by me.</span>
-                <span>Use right → and left ← keys to navigate</span>
+                <span className="hidden lg:block">
+                    Use right → and left ← keys to navigate
+                </span>
             </div>
         </div>
     );

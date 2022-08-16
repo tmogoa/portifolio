@@ -11,7 +11,7 @@ const Interests = () => {
             <div className="max-w-fit font-bold text-3xl text-cyan-500 font-heading bg-white py-2 px-4 rounded-sm text-center">
                 Interests
             </div>
-            <div className="grid grid-cols-3 mx-auto gap-20">
+            <div className="grid grid-cols-1 lg:grid-cols-3 mx-auto gap-20 pb-4 lg:pb-0">
                 <div className="flex flex-col items-center justify-around bg-white rounded p-4 w-48 h-36 text-blue-700">
                     <span>
                         <GiMaterialsScience size={50} />

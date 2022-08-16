@@ -8,7 +8,7 @@ const Projects = () => {
             <div className="max-w-fit font-bold text-3xl text-cyan-500 font-heading bg-white py-2 px-4 rounded-sm text-center">
                 Projects
             </div>
-            <div className="grid grid-cols-3 gap-5 text-gray-800">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 text-gray-800 pb-4 lg:pb-0">
                 <a
                     href="https://github.com/Jahaslito/adc-frontend"
                     target="blank_"
@@ -71,14 +71,7 @@ const Projects = () => {
                     <div>
                         <span className="text-sm text-gray-800">
                             A hosted, informational React-Laravel CRUD website
-                            for an organization (pro bono).{" "}
-                            <a
-                                href="https://github.com/tmogoa/sbc"
-                                target="blank_"
-                                className="text-blue-500 hover:underline"
-                            >
-                                Github link.
-                            </a>
+                            for an organization (pro bono).
                         </span>
                     </div>
                 </a>
@@ -100,14 +93,7 @@ const Projects = () => {
                         <span className="text-sm text-gray-800">
                             Published (Play Store) Android mobile app for CRUD
                             management of hymn texts, voice audios and music
-                            scores(min API level 19).{" "}
-                            <a
-                                href="https://github.com/tmogoa/SUCC"
-                                target="blank_"
-                                className="text-blue-500 hover:underline"
-                            >
-                                Github link.
-                            </a>
+                            scores(min API level 19).
                         </span>
                     </div>
                 </a>
