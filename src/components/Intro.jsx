@@ -17,7 +17,7 @@ const Intro = () => {
                     Tony Mogoa
                 </div>
                 <span className="text-xs text-white font-bold uppercase">
-                    Computer Science
+                    Programmer
                 </span>
             </div>
         </div>
